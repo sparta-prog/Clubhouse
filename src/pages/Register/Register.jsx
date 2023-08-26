@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import StepAvatar from '../../components/shared/Steps/StepAvatar/StepAvatar';
 import StepName from '../../components/shared/Steps/StepName/StepName';
 import StepOtp from '../../components/shared/Steps/StepOtp/StepOtp';
@@ -14,8 +15,17 @@ const steps = {
 };
 
 function Register() {
+    const[step, setStep] = useState(1);
+    const Step = steps[step];
+
+    function onNext() {
+        setStep(step + 1);
+    }
+
   return (
-    <div>Register</div>
+    <div>
+        <Step onNext={onNext}/>
+    </div>
   )
 }
 
