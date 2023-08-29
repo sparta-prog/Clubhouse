@@ -16,7 +16,7 @@ const Phone = ({ onNext }) => {
             />
             <div>
                 <div className={styles.actionButtonWrap}>
-                    <Button text="Next"  />
+                    <Button text="Next" onClick={onNext}/>
                 </div>
                 <p className={styles.bottomParagraph}>
                     By entering your number, you’re agreeing to our Terms of
