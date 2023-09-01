@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const hashService = require('./hash-service');
 
 const smsSid = process.env.SMS_SID
 const smsAuthToken = process.env.SMS_AUTH_TOKEN
@@ -20,7 +21,12 @@ class OtpService {
         })
     }
 
-    verifyOtp() {}
+    verifyOtp(hashedOtp, data) {
+        let calculatedHash = hashService.hashOtp(data);
+
+        return calculatedHash === hashedOtp
+        
+    }
 
 }
 
