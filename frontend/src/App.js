@@ -5,6 +5,7 @@ import Authenticate from './pages/Authenticate/Authenticate';
 import Activate from './pages/Activate/Activate';
 import Home from './pages/Home/Home';
 import Rooms from './pages/Rooms/Rooms';
+import { useSelector } from 'react-redux';
 const isAuth = false;
 const user = {
   activated:true
@@ -39,9 +40,7 @@ function App() {
 }
 
 function GuestAuth({ children }) {
-  // let auth = useAuth();
-  // let location = useLocation();
-
+  const { isAuth } = useSelector((state) => state.auth);
   if (isAuth) {
     // Redirect them to the /private rooms page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
@@ -55,7 +54,7 @@ function GuestAuth({ children }) {
 
 function SemiProtectedRoute({ children }) {
   let location = useLocation();
-
+  const { user, isAuth } = useSelector((state) => state.auth);
   return (
     !isAuth ? (
       <Navigate to='/' state={{ from: location }} />
@@ -70,7 +69,7 @@ function SemiProtectedRoute({ children }) {
 
 function ProtectedRoute({children}) {
 let location = useLocation();
-
+const { user, isAuth } = useSelector((state) => state.auth);
   return (
     !isAuth ? (
       <Navigate to='/' state={{ from: location }} />
