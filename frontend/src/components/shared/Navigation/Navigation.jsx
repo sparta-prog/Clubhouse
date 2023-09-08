@@ -22,6 +22,12 @@ const Navigation = () => {
                 <img src="/images/logo.png" alt="logo" />
                 <span style={logoText}>Clubhouse</span>
             </Link>
+            <button
+                        className={styles.logoutButton}
+                        onClick={logoutUser}
+                    >
+                        <img src="/images/logout.png" alt="logout" />
+                    </button>
         </nav>
     );
 };
