@@ -6,13 +6,20 @@ import Activate from './pages/Activate/Activate';
 import Home from './pages/Home/Home';
 import Rooms from './pages/Rooms/Rooms';
 import { useSelector } from 'react-redux';
-const isAuth = false;
-const user = {
-  activated:true
-}
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+import Loader from './components/shared/Loader/Loader';
+// const isAuth = false;
+// const user = {
+//   activated:true
+// }
 
 function App() {
-  return (
+   // call refresh endpoint
+   const { loading } = useLoadingWithRefresh();
+
+   return loading ? (
+    <Loader message="Loading, please wait.." />
+   ) : (
     <BrowserRouter>
       <Navigation />
       <Routes>
